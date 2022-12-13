@@ -1,0 +1,84 @@
+/dataset
+	/examples
+	gif and png files of different categories(generated mesh samples/3 models in a line deformed from a single ellipsoid mesh with different number of vertices)
+	/preprocess
+	???????shapenet Dataset???????
+	
+	base_dataset.py
+		利用torchvision.transform.normalize_img来归一化图片？归一化的参数是怎么确定的
+	imagenet.py
+		
+	shapenet.py
+/utils
+	/demo_selection
+	/migrations
+	scrits to migate tensorflow checkpoints into .pth
+	/vis
+	visualization
+	average_meter.py
+	mesh.py
+	tensor.py
+config.py
+	
+
+
+
+
+What is ShapeNet?
+-official tensorflow implementation provides a subset of shapeNet
+-
+
+What is /meta after shapeNet?
+What is /shapenet after preprocess?
+
+Where is imageNet in this project?
+
+
+What is slurm clusters?
+-train on slurm clusters?????????
+
+
+what is yml?
+-modify configuration in a yml file for training/evaluation
+it overrides default settings in options.py
+
+meta files to help you to establish the folder tree?
+
+whati is .pth file?
+A PTH file is a machine learning model created using PyTorch, an open-source machine learning library.
+
+
+Dataset Class is a wrapper: loads the data from a given file path and returns a dictionary containing already prepared data.
+__len__(self)  返回整个dataset的文件多少
+__getitem__(self, index)返回第i个文件（已经经过transform，具体transform方法可以构造类时导入）
+
+Transform class:  处理图片
+__call__(self, image)  可以用transform()方便的调用
+
+DataLoader Class:
+
+
+
+
+talking to the moon~ 
+try to get to you~
+in case you're on the other side 
+talking to me too
+or i'm a fool 
+who speaks alone 
+talking to the moon~
+
+i know you're somewhere out there 
+somewhere far away 
+i want you back
+i want you back
+
+my neighbours think i am crazy 
+they don't understand 
+you're all i had
+you're all i had
+
+at night when the stars light up my room 
+i sit by myself
+talking to the moon~
+try to get to you~

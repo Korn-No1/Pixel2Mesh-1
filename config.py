@@ -6,7 +6,7 @@ SHAPENET_ROOT = os.path.join(DATASET_ROOT, "shapenet")
 IMAGENET_ROOT = os.path.join(DATASET_ROOT, "imagenet")
 
 # ellipsoid path
-ELLIPSOID_PATH = os.path.join(DATASET_ROOT, "ellipsoid/info_ellipsoid.dat")
+ELLIPSOID_PATH = os.path.join(DATASET_ROOT, "ellipsoid/info_ellipsoid.dat") #为什么这里指到的是.dat file?
 
 # pretrained weights path
 PRETRAINED_WEIGHTS_PATH = {
@@ -19,3 +19,4 @@ PRETRAINED_WEIGHTS_PATH = {
 IMG_NORM_MEAN = [0.485, 0.456, 0.406]
 IMG_NORM_STD = [0.229, 0.224, 0.225]
 IMG_SIZE = 224
+#为什么用这个mean和std来normalize图片？
