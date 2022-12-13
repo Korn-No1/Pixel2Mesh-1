@@ -11,7 +11,6 @@ ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 
 class ImageNet(Dataset):
-
     def __init__(self, root_dir, split="train"):
         self.image_dir = os.path.join(root_dir, split)
         self.images = []
@@ -24,6 +23,7 @@ class ImageNet(Dataset):
 
         self.normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406],
                                               std=[0.229, 0.224, 0.225])
+        #把一些列transforms结合起来，利用transforms.compose？
         if split == "train":
             self.transform = transforms.Compose([
                 transforms.RandomResizedCrop(224),
