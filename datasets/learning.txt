@@ -9,15 +9,25 @@
 	imagenet.py
 		
 	shapenet.py
+		shapeNet 用于打包图片和目标mesh
+		shapeNetImageFolder
+		
+
+		.dot 文件是什么？？
+		pkl_path对于.dat文件
+		img_path对应.png文件
 /utils
 	/demo_selection
 	/migrations
-	scrits to migate tensorflow checkpoints into .pth
+	scripts to migrate tensorflow checkpoints into .pth 怎么把tensorflow中的模型移植到pytorch中
 	/vis
 	visualization
 	average_meter.py
+		
 	mesh.py
+		
 	tensor.py
+		
 config.py
 	
 
