@@ -1,3 +1,6 @@
+--------------------项目结构：-------------------------------------------------------------------------------
+
+
 /dataset
 	/examples
 	gif and png files of different categories(generated mesh samples/3 models in a line deformed from a single ellipsoid mesh with different number of vertices)
@@ -31,7 +34,7 @@
 config.py
 	
 
-
+---------------------提问区：-------------------------------------------------------------------------------------
 
 
 What is ShapeNet?
@@ -58,18 +61,33 @@ whati is .pth file?
 A PTH file is a machine learning model created using PyTorch, an open-source machine learning library.
 
 
-Dataset Class is a wrapper: loads the data from a given file path and returns a dictionary containing already prepared data.
-__len__(self)  返回整个dataset的文件多少
-__getitem__(self, index)返回第i个文件（已经经过transform，具体transform方法可以构造类时导入）
 
-Transform class:  处理图片
-__call__(self, image)  可以用transform()方便的调用
+-------------------网络结构分析：-------------------------------------------------------------------------------
+
+Transform class:  处理图片，输入image和lable输出 tranfomed image和label
+__call__(self, image): 可以用transform()方便的调用
+
+Dataset Class：is a wrapper, loads the data from a given file path and returns a dictionary containing already prepared data.
+__init__: 将data和label的path，作为tuple?存入list中
+__getitem__(self, index): 返回第i个file和label已经经过transform，具体transform方法可以构造类时导入）
+__len__(self): 返回整个dataset的文件多少
 
 DataLoader Class:
+还没细看
+总的来说就是dataset返回的data和label可能时各种形式的
+dataloader总结了各种形式并且把他们结合成一个torch.tensor以供后面调用
 
+Model Class:
+__init__:初始化层slef.conv1=nn.conv2d 同时也初始化了层中的参数 parameters/weights
+__forward__（self,t):返回当前的输入  t=self.bn(t) t=self.relu() return t
 
+Optimizzer Class:
+还没细看
+具体写optimizer很复杂，可以先记住怎么使用
+构建一个optimizer对象： optimizer = optim.Adam(model.parameters(), lr = 0.0001)
+在training时：optimizer.step() 来更新parameters
 
-
+---------------------------------------------------------------------------------------------------------------------
 talking to the moon~ 
 try to get to you~
 in case you're on the other side 

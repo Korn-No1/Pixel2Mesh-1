@@ -103,17 +103,19 @@ def _update_dict(full_key, val, d):
             _update_dict(full_key + "." + vk, vv, d[vk])
         else:
             d[vk] = vv
-
+#通过entrypoint导入的yaml（里面写的dict信息）文件
+#来更新EasyDict对象option里的具体数据
 
 def _update_options(options_file):
-    # do scan twice
-    # in the first round, MODEL.NAME is located so that we can initialize MODEL.EXTRA
-    # in the second round, we update everything
+    # do scan twice？
+    # in the first round, MODEL.NAME is located so that we can initialize MODEL.EXTRA？
+    # in the second round, we update everything？
 
     with open(options_file) as f:
         options_dict = yaml.safe_load(f)
         # do a dfs on `BASED_ON` options files
         if "based_on" in options_dict:
+            #以dict的形式导入yaml文件  如果dict中有based on的话
             for base_options in options_dict["based_on"]:
                 _update_options(os.path.join(os.path.dirname(options_file), base_options))
             options_dict.pop("based_on")
@@ -183,11 +185,13 @@ def reset_options(options, args, phase='train'):
     os.makedirs(options.summary_dir, exist_ok=True)
 
     logger = create_logger(options, phase=phase)
+    #logger还没看
     options_text = pprint.pformat(vars(options))
     logger.info(options_text)
 
     print('=> creating summary writer')
     writer = SummaryWriter(options.summary_dir)
+    #writer还没看
 
     return logger, writer
 
