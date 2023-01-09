@@ -10,6 +10,7 @@ import config
 
 
 def torch_sparse_tensor(indices, value, size):
+
     coo = coo_matrix((value, (indices[:, 0], indices[:, 1])), shape=size)
     values = coo.data
     indices = np.vstack((coo.row, coo.col))
@@ -27,7 +28,8 @@ class Ellipsoid(object):
         with open(file, "rb") as fp:
             fp_info = pickle.load(fp, encoding='latin1')
 
-        # shape: n_pts * 3
+        # shape: n_pts*3（指的是维度信息）
+        # fp_info[0]是三维的点的坐标
         self.coord = torch.tensor(fp_info[0]) - torch.tensor(mesh_pos, dtype=torch.float)
 
         # edges & faces & lap_idx

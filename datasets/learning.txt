@@ -19,8 +19,15 @@
 		.dot 文件是什么？？
 		pkl_path对于.dat文件
 		img_path对应.png文件
+/models
+	/backbones
+	/layers
+	/losses
+	/classifier.py
+	/p2m.py
 /utils
 	/demo_selection
+	
 	/migrations
 	scripts to migrate tensorflow checkpoints into .pth 怎么把tensorflow中的模型移植到pytorch中
 	/vis
