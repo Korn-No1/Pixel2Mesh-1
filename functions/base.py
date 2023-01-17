@@ -24,6 +24,7 @@ class CheckpointRunner(object):
         if not torch.cuda.is_available() and self.options.num_gpus > 0:
             raise ValueError("CUDA not found yet number of GPUs is set to be greater than 0")
         if os.environ.get("CUDA_VISIBLE_DEVICES"):
+            #logger.info在命令行中显示
             logger.info("CUDA visible devices is activated here, number of GPU setting is not working")
             self.gpus = list(map(int, os.environ["CUDA_VISIBLE_DEVICES"].split(",")))
             self.options.num_gpus = len(self.gpus)

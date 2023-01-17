@@ -7,6 +7,8 @@ def get_backbone(options):
         if options.align_with_tensorflow:
             nn_encoder = VGG16TensorflowAlign()
         else:
+            #这句话有点吊 ："pretrained" in options.backbone
+            #意为只要option.backbone的字符串里有“pretrained”就可以
             nn_encoder = VGG16P2M(pretrained="pretrained" in options.backbone)
         nn_decoder = VGG16Recons()
     elif options.backbone == "resnet50":

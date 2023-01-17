@@ -20,6 +20,8 @@ class P2MModel(nn.Module):
         self.init_pts = nn.Parameter(ellipsoid.coord, requires_grad=False)
         self.gconv_activation = options.gconv_activation
 
+        #get_backbone:给模型一个encoder和decoder
+        #resnet没有decoder
         self.nn_encoder, self.nn_decoder = get_backbone(options)
         self.features_dim = self.nn_encoder.features_dim + self.coord_dim
 
@@ -48,8 +50,11 @@ class P2MModel(nn.Module):
                            adj_mat=ellipsoid.adj_mat[2])
 
     def forward(self, img):
+        #img应该是指一个batch的img
         batch_size = img.size(0)
+        #
         img_feats = self.nn_encoder(img)
+        #
         img_shape = self.projection.image_feature_shape(img)
 
         init_pts = self.init_pts.data.unsqueeze(0).expand(batch_size, -1, -1)

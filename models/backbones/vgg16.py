@@ -104,12 +104,16 @@ class VGG16P2M(nn.Module):
         self.conv5_3 = nn.Conv2d(512, 512, 3, stride=1, padding=1)
         self.conv5_4 = nn.Conv2d(512, 512, 3, stride=1, padding=1)
 
+        #指定权重 不然的话自己初始化权重
         if "vgg16p2m" in config.PRETRAINED_WEIGHTS_PATH and pretrained:
+            #pytorch存储模型有两种情况 一种是存模型+权重  另一种是只存权重
+            #这里就是给现有模型读入权重的方法 利用torch.load 和load._state_dict
             state_dict = torch.load(config.PRETRAINED_WEIGHTS_PATH["vgg16p2m"])
             self.load_state_dict(state_dict)
         else:
             self._initialize_weights()
 
+    #初始化各部分的权重
     def _initialize_weights(self):
         for m in self.modules():
             if isinstance(m, nn.Conv2d):
@@ -156,7 +160,7 @@ class VGG16P2M(nn.Module):
 
         return [img2, img3, img4, img5]
 
-
+#reconstruction:复原图片
 class VGG16Recons(nn.Module):
 
     def __init__(self, input_dim=512, image_channel=3):
